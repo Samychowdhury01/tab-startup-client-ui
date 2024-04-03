@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { TRegisterData } from "@/types/Register";
+import { TRegisterData } from "@/types/type.register";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -159,9 +159,12 @@ const SignUpComponent = () => {
           Sign up
         </Button>
       </form>
-        <p className="text-center text-neutral-700 mt-5">
-        Been here before? <Link href='/' className="text-[#00BDD6FF]">Log in</Link>
-        </p>
+      <p className="text-center text-neutral-700 mt-5">
+        Been here before?{" "}
+        <Link href="/" className="text-[#00BDD6FF]">
+          Log in
+        </Link>
+      </p>
     </div>
   );
 };
