@@ -1,10 +1,12 @@
 "use client";
+import { UserContext } from "@/app/context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { TUserInfo } from "@/types/type.userInfo";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -13,7 +15,6 @@ const LoginComponent = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
-  // react form hook for signUp
   const {
     register,
     handleSubmit,
@@ -43,7 +44,7 @@ const LoginComponent = () => {
         });
         console.log(resData);
         localStorage.setItem("token", resData?.data);
-        router.push("/");
+        router.push("/dashboard");
       } else {
         setErrorMessage(resData?.message || "Something went wrong!");
       }
@@ -81,8 +82,6 @@ const LoginComponent = () => {
               id="password"
               {...register("password", {
                 required: true,
-                minLength: 6,
-                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
               })}
               name="password"
               placeholder="Password"
@@ -104,26 +103,8 @@ const LoginComponent = () => {
           {errors.password?.type === "required" && (
             <p className="text-red-600">Password is required</p>
           )}
-          {errors.password?.type === "minLength" && (
-            <p className="text-red-600">Password must be 6 characters</p>
-          )}
-          {errors.password?.type === "maxLength" && (
-            <p className="text-red-600">
-              Password must be less than 20 characters
-            </p>
-          )}
-          {errors.password?.type === "pattern" && (
-            <p className="text-red-600">
-              Password must have one Uppercase <br /> one lower case, one number
-              and one special character.
-            </p>
-          )}
         </div>
-        {errorMessage && (
-          <p className="text-red-600">
-            {errorMessage}
-          </p>
-        )}
+        {errorMessage && <p className="text-red-600">{errorMessage}</p>}
         <Button className="w-full" variant="primary" type="submit">
           Login
         </Button>

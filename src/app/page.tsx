@@ -16,7 +16,7 @@ export default function Home() {
     </div>
     {/* signUp component */}
     <div className="flex-1 w-full">
-      <LoginComponent/>
+     <h1>This is homepage..</h1>
     </div>
   </main>
   );

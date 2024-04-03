@@ -99,7 +99,7 @@ const SignUpComponent = () => {
           <Label htmlFor="phoneNo">Phone No.</Label>
           <Input
             type="number"
-            {...register("phoneNo", { required: true })}
+            {...register("phoneNo", { required: true, maxLength: 11 })}
             name="phoneNo"
             id="phoneNo"
             placeholder="Phone Number"
