@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 
 const SignUp = () => {
   return (
-    <div className="auth-bg h-screen flex flex-row justify-center items-center gap-20 p-20">
-      <div className="flex-1 ml-20">
-        <Image src={sideImg} alt="sign side Image" />
+    <div className="auth-bg lg:h-screen flex flex-col lg:flex-row justify-center items-center lg:gap-20 p-5 md:p-20">
+      <div className="flex-1 lg:ml-20">
+        <Image src={sideImg} alt="sign side Image" priority className="w-full lg:w-[637px] h-full object-fill"/>
       </div>
       {/* signUp component */}
-      <div className="flex-1">
+      <div className="flex-1 w-full">
         <SignUpComponent/>
       </div>
     </div>
