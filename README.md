@@ -34,3 +34,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+## Pending Tasks:
+1. HomePage 
+2. dashboard
+3. protected route for security 
+4. Error page design
+---
+## Done: 
+1. signUp page design with functionalities
+2. login page design with functionalities
+3. code refactor 
+4. necessary utility functions

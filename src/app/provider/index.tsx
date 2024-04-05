@@ -7,6 +7,7 @@ import { decodedToken } from "@/utils/jwt";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { TUserInfo } from "@/types/type.userInfo";
+import { JwtPayload } from "jwt-decode";
 const UserProvider = ({
   children,
 }: Readonly<{

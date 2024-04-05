@@ -1,12 +1,11 @@
 "use client";
-import { UserContext } from "@/app/context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { TUserInfo } from "@/types/type.userInfo";
+import getUrl from "@/utils/getUrl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -14,6 +13,7 @@ import Swal from "sweetalert2";
 const LoginComponent = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const url = getUrl()
   const router = useRouter();
   const {
     register,
@@ -25,7 +25,7 @@ const LoginComponent = () => {
     try {
       console.log(data);
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_DEVELOPMENT_API as string}/auth/login`,
+        `${url}/auth/login`,
         {
           method: "POST",
           headers: {

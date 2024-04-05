@@ -1,17 +1,20 @@
 "use client";
+import { UserContext } from "@/app/context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { TRegisterData } from "@/types/type.register";
+import getUrl from "@/utils/getUrl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import {  useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const SignUpComponent = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const url = getUrl()
   const router = useRouter();
   // react form hook for signUp
   const {
@@ -24,18 +27,13 @@ const SignUpComponent = () => {
     const user = { ...data } as TRegisterData;
     try {
       console.log(data);
-      const res = await fetch(
-        `${
-          process.env.NEXT_PUBLIC_DEVELOPMENT_API as string
-        }/users/create-user`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ user }),
-        }
-      );
+      const res = await fetch(`${url}/users/create-user`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user }),
+      });
       const resData = await res.json();
       console.log(resData);
       if (resData?.success) {
